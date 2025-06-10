@@ -24,13 +24,15 @@ public class Edge<E> {
     }
 
 
-    public boolean equals(Object o){
-        if(o instanceof Edge<?>){
-            Edge <?> e = (Edge<?>)0;
-            return this.refDest.equals(e.refDest);
-        }
-        return false;
+@Override
+public boolean equals(Object o) {
+    if (o instanceof Edge<?>) {
+        Edge<?> e = (Edge<?>) o;
+        return this.refDest.equals(e.refDest);
     }
+    return false;
+}
+
 
     public String toString() {
         if (this.weight > -1)

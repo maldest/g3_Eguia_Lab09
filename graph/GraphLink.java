@@ -1,7 +1,5 @@
 package graph;
 
-import graph.Vertex;
-import graph.Edge;
 import utils.ListLinked;
 
 public class GraphLink<E> {
@@ -11,29 +9,28 @@ public class GraphLink<E> {
         listVertex = new ListLinked<>();
     }
 
-    public void insertVertex(E data){
-        //metodo
-        Vertex<E> = new Vertex<>(data);
-        if (listVertex.search(v) == -1){
+    //metodo
+    public void insertVertex(E data) {
+        Vertex<E> v = new Vertex<>(data);
+        if (listVertex.search(v) == -1) {
             listVertex.insert(v);
         }
     }
 
-    public void insertEdge(E verOri, E verDes){
-        //metodo
-        Vertex <E> v0ri = list.Vertex.get(listVertex.search(New Vertex<>(verOri)));
-        Vertex <E> v0ri = list.Vertex.get(listVertex.search(New Vertex<>(verDes)));
+    //metodo
+    public void insertEdge(E verOri, E verDes) {
+        Vertex<E> vOri = listVertex.get(listVertex.search(new Vertex<>(verOri)));
+        Vertex<E> vDes = listVertex.get(listVertex.search(new Vertex<>(verDes)));
 
-        if (vOri != null && vDes != null){
+        if (vOri != null && vDes != null) {
             vOri.getListAdj().insert(new Edge<>(vDes));
-            vDes.getListAdj().insert(new Edge<> (vOri));
-
-
+            vDes.getListAdj().insert(new Edge<>(vOri)); // no dirigido
         }
     }
 
-    public String toString(){
+    @Override
+    public String toString() {
         return this.listVertex.toString();
     }
-    
 }
+
