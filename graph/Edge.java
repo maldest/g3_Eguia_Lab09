@@ -1,32 +1,42 @@
+package graph;
 
 public class Edge<E> {
-    private Vertex<E> refDest:
+    private Vertex<E> refDest;
     private int weight;
 
     public Edge(Vertex<E> refDest){
         this(refDest,-1);
     }
 
-    public Edge(Vertex<E> refDest){
-        this(refDest,-1);
-    }
 
     public Edge(Vertex<E> refDest, int weight){
         this.refDest = refDest;
         this.weight = weight;
     }
 
+    //metodos
+    public Vertex<E> getRefDest(){
+        return refDest;
+    }
+
+    public int getWeight(){
+        return weight;
+    }
+
+
     public boolean equals(Object o){
         if(o instanceof Edge<?>){
-            Edge <E> e = (Edge<E>)0;
+            Edge <?> e = (Edge<?>)0;
             return this.refDest.equals(e.refDest);
         }
         return false;
     }
 
-    public String toString(){
-        if(this.weight > -1) return refDest.getData()+ "["+ this.weight+"], ";
-        else return refDest.getData()+", "; 
+    public String toString() {
+        if (this.weight > -1)
+            return refDest.getData() + "[" + this.weight + "], ";
+        else
+            return refDest.getData() + ", ";
     }
 
 }

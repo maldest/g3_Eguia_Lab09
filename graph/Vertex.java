@@ -1,42 +1,35 @@
 package graph;
 
-import java.util.List;
+import utils.ListLinked;
 
-import utils.listLinked;
-
-public class Vertex <e>{
+public class Vertex<E> {
     private E data;
     protected ListLinked<Edge<E>> listAdj;
 
-    public Vertex(E data){
+    public Vertex(E data) {
         this.data = data;
-        list.Adj = new ListLinked<Edge<E>>();
-
+        listAdj = new ListLinked<>();
     }
 
     public E getData() {
         return data;
     }
 
-    //getter
-
-    public ListLinked<Edge<E>> getListAdj(){
+    public ListLinked<Edge<E>> getListAdj() {
         return listAdj;
     }
 
-
-
-    public boolean equals (Object o) {
-        if(o instanceof Vertex<?>){
-            Vertex<?> v = (Vertex<?>)o;
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Vertex<?>) {
+            Vertex<?> v = (Vertex<?>) o;
             return this.data.equals(v.data);
-        }   
+        }
         return false;
-
     }
 
+    @Override
     public String toString() {
         return this.data + " --> " + this.listAdj.toString() + "\n";
     }
 }
-
