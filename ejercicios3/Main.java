@@ -1,70 +1,41 @@
-import graph.GraphLink;
-
-import java.util.ArrayList;
-import java.util.Scanner;
+import graph.GraphListEdge;
 
 public class Main {
     public static void main(String[] args) {
-        GraphLink<String> grafo = new GraphLink<>();
+        // Crear un grafo no dirigido con tipo de dato String
+        GraphListEdge<String, Integer> grafo = new GraphListEdge<>();
 
-        // ==== DATOS PREDEFINIDOS ====
+        // Insertar vértices
         grafo.insertVertex("A");
         grafo.insertVertex("B");
         grafo.insertVertex("C");
         grafo.insertVertex("D");
         grafo.insertVertex("E");
 
+        // Insertar aristas
         grafo.insertEdge("A", "B");
         grafo.insertEdge("A", "C");
         grafo.insertEdge("B", "D");
         grafo.insertEdge("C", "E");
+        grafo.insertEdge("D", "E");
 
-        Scanner sc = new Scanner(System.in);
-        int opcion;
+        // Mostrar mensaje de éxito
+        System.out.println("Grafo construido con vértices y aristas:");
 
-        do {
-            System.out.println("\n====== MENÚ DEL GRAFO ======");
-            System.out.println("1. Mostrar grafo");
-            System.out.println("2. Recorrido BFS desde un vértice");
-            System.out.println("3. Camino BFS entre dos vértices");
-            System.out.println("0. Salir");
-            System.out.print("Seleccione una opción: ");
-            opcion = sc.nextInt(); sc.nextLine();
+        // Probar búsqueda de vértices
+        System.out.println("¿Existe vértice 'A'? " + grafo.searchVertex("A"));
+        System.out.println("¿Existe vértice 'F'? " + grafo.searchVertex("F"));
 
-            switch (opcion) {
-                case 1:
-                    System.out.println("\nRepresentación del grafo:");
-                    System.out.println(grafo);
-                    break;
+        // Probar búsqueda de aristas
+        System.out.println("¿Existe arista entre 'A' y 'C'? " + grafo.searchEdge("A", "C"));
+        System.out.println("¿Existe arista entre 'B' y 'E'? " + grafo.searchEdge("B", "E"));
 
-                case 2:
-                    System.out.print("Ingrese vértice de inicio: ");
-                    String inicio = sc.nextLine();
-                    grafo.bfs(inicio);
-                    break;
+        // Recorrido BFS desde el vértice "A"
+        System.out.println("\nRecorrido BFS desde el vértice A:");
+        grafo.bfs("A");
 
-                case 3:
-                    System.out.print("Ingrese vértice origen: ");
-                    String origen = sc.nextLine();
-                    System.out.print("Ingrese vértice destino: ");
-                    String destino = sc.nextLine();
-                    ArrayList<String> camino = grafo.bfsPath(origen, destino);
-                    if (camino.isEmpty()) {
-                        System.out.println("No hay camino entre " + origen + " y " + destino);
-                    } else {
-                        System.out.println("Camino: " + camino);
-                    }
-                    break;
-
-                case 0:
-                    System.out.println("Saliendo del programa...");
-                    break;
-
-                default:
-                    System.out.println("❌ Opción inválida.");
-            }
-
-        } while (opcion != 0);
+        // Recorrido BFS desde el vértice "E"
+        System.out.println("\nRecorrido BFS desde el vértice E:");
+        grafo.bfs("E");
     }
 }
-
